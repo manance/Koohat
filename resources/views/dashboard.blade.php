@@ -14,4 +14,7 @@
             </div>
         </div>
     </div>
+    @foreach($quizzes as $quiz)
+        <a href="#">{{ $quiz->name }}</a>
+    @endforeach
 </x-app-layout>
