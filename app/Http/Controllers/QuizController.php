@@ -10,7 +10,8 @@ class QuizController extends Controller
         $quizzes = Quiz::all();
         return view('dashboard', compact('quizzes'));
     }
-    public function show(){
-        
+    public function show(Quiz $quiz){
+        $questions = $quiz->questions->shuffle();
+        return view('quiz', compact('quiz', 'questions'));
     }
 }

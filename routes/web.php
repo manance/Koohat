@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,7 +13,7 @@ Route::get('/quizzes', [QuizController::class, 'index'])->middleware(['auth', 'v
 
 Route::middleware('auth')->group(function () {
     Route::get('/quizzes/{quiz}', [QuizController::class, 'show']);
-
+    Route::get('/questions/{question}', [QuestionController::class, 'show']);
 });
 
 Route::middleware('auth')->group(function () {
