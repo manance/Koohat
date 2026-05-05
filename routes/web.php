@@ -14,6 +14,7 @@ Route::get('/quizzes', [QuizController::class, 'index'])->middleware(['auth', 'v
 Route::middleware('auth')->group(function () {
     Route::get('/quizzes/{quiz}', [QuizController::class, 'show']);
     Route::get('/questions/{question}', [QuestionController::class, 'show']);
+    Route::get('/questions/check', [QuestionController::class, 'check']);
 });
 
 Route::middleware('auth')->group(function () {
