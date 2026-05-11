@@ -16,6 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                @if(Auth::user()->is_admin)
+                    <x-nav-link :href="route('admin.quizzes.create')" :active="request()->routeIs('admin.*')">
+                        {{ __('Create Quizes') }}
+                    </x-nav-link>
+                @endif
+                <div></div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -71,6 +78,11 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        @if(Auth::user()->is_admin)
+            <x-responsive-nav-link :href="route('admin.quizzes.create')" :active="request()->routeIs('create')">
+                {{ __('Create Quizes') }}
+            </x-responsive-nav-link>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

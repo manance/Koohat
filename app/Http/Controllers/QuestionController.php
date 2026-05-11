@@ -7,7 +7,24 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
     public function show(Request $request, Question $question){
+        $questionIds = session('question_ids', []);
+        $currentStep = session('current_step', 0);
+
+        if(empty($questionIds)){
+            return redirect('/quizzes')->with('error', 'start a quiz first!');
+        }
+
+        if(!in_array($question->id, $questionIds)){
+            return redirect('/quizzes')->with('error', 'Invalid question');
+        }
+
+        $expectedQuestionId = $questionIds[$currentStep];
+        if($question->id !== $expectedQuestionId){
+            return redirect("/questions/{$expectedQuestionId}");
+        }
+
         $session_key = 'answer_order_' . $question->id;
+
         if(!isset($request->answer)){
             $answers = $question->answers->shuffle();
             session([$session_key => $answers->pluck('id')->toArray()]);
@@ -17,7 +34,24 @@ class QuestionController extends Controller
         $answers = $question->answers->sortBy(function($answer) use ($orderedIds) {
             return array_search($answer->id, $orderedIds);
         });
-        $result = (bool) $request->correct;
-        return view('question', compact('question', 'answers', 'result'));
+
+        $result = (bool) $request->answer;
+        if($result){
+            session(['score' => session('score', 0) + 1]);
+        }
+        $nextStep = $currentStep + 1;
+        session(['current_step' => $nextStep]);
+        $score = session('score', 0);
+        
+        if($nextStep >= count($questionIds)){
+            return view('question', compact('question', 'answers', 'result', 'score'))
+                ->with('nextQuestionId', null)
+                ->with('quizComplete', true);
+        }
+
+        $nextQuestionId = $questionIds[$nextStep];
+
+        return view('question', compact('question', 'answers', 'result', 'score', 'nextQuestionId'));
     }
+    
 }
