@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Question;
+use App\Models\Answer;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -36,6 +37,16 @@ class QuestionController extends Controller
         });
 
         $result = (bool) $request->answer;
+
+        $summary = session('quiz_summary', []);
+        $summary[] = [
+            'question' => $question->question,
+            'your_answer' => $request->submition,
+            'correct' => $result,
+            'correct_answer' => $question->answers->where('correct', true)->first()->answer
+        ];
+        session(['quiz_summary' => $summary]);
+
         if($result){
             session(['score' => session('score', 0) + 1]);
         }
@@ -44,9 +55,7 @@ class QuestionController extends Controller
         $score = session('score', 0);
         
         if($nextStep >= count($questionIds)){
-            return view('question', compact('question', 'answers', 'result', 'score'))
-                ->with('nextQuestionId', null)
-                ->with('quizComplete', true);
+            return redirect('/results');
         }
 
         $nextQuestionId = $questionIds[$nextStep];

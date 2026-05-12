@@ -14,6 +14,7 @@
             <button name="answer" style="color: {{ $answer->correct ? 'green' : 'red' }};" value="{{ $answer->correct }}" disabled>{{ $answer->answer }}</button>
         @else
             <button name="answer" value="{{ $answer->correct }}">{{ $answer->answer }}</button>
+            <input name="submition" type="hidden" value="{{ $answer->answer }}"> 
         @endisset
     </form>
     @endforeach
