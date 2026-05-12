@@ -12,6 +12,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/quizzes/create', [QuizController::class, 'create'])->name('quizzes.create');
+    Route::post('/quizzes', [QuizController::class, 'store'])->name('quizzes.store');
 });
 
 Route::get('/quizzes', [QuizController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
