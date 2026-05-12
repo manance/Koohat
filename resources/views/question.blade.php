@@ -1,7 +1,7 @@
 <x-layout>
     <h1>{{ $question->question }}</h1>
     <div style="background: #e0e0e0; border-radius: 8px; height: 12px;">
-        <div style="width: {{ (session('current_step') / 15) * 100 }}%; 
+        <div style="width: {{ (session('current_step') / count(session('question_ids'))) * 100 }}%; 
                     background: #4caf50; 
                     height: 100%; 
                     border-radius: 8px;
