@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <h1>{{ $question->question }}</h1>
     <div style="background: #e0e0e0; border-radius: 8px; height: 12px;">
         <div style="width: {{ (session('current_step') / count(session('question_ids'))) * 100 }}%; 
@@ -29,4 +29,4 @@
         @endif
     @endisset
     <script src="script.js"></script>
-</x-layout>
+</x-app-layout>

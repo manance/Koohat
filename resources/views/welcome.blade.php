@@ -1,4 +1,4 @@
-<x-layout>
+<x-guest-layout>
     <h1>Hello</h1>
     @if (Route::has('login'))
         <nav class="flex items-center justify-end gap-4">
@@ -28,4 +28,4 @@
             @endauth
         </nav>
     @endif
-</x-layout>
+</x-guest-layout>

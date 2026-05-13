@@ -22,7 +22,10 @@
                         {{ __('Create Quizes') }}
                     </x-nav-link>
                 @endif
-                <div></div>
+                
+                <x-nav-link :href="route('history')" :active="request()->routeIs('history')">
+                    {{ __('Vēsture') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->

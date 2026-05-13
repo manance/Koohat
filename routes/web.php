@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminQuizController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\HistoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,9 +18,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 Route::get('/quizzes', [QuizController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/quizzes/{quiz}', [QuizController::class, 'show']);
-    Route::get('/questions/{question}', [QuestionController::class, 'show']);
-    Route::get('/results', [QuizController::class, 'results']);
+    Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
+    Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+    Route::get('/results', [QuizController::class, 'results'])->name('results');
+    Route::get('/history', [HistoryController::class, 'index'])->name('history');
 });
 
 Route::middleware('auth')->group(function () {

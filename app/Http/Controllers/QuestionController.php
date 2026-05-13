@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Question;
-use App\Models\Answer;
+use App\Models\History;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -55,6 +56,18 @@ class QuestionController extends Controller
         $score = session('score', 0);
         
         if($nextStep >= count($questionIds)){
+            $existing = History::where('user_id', Auth::id())->where('quiz_id', session('quiz_id'))->first();
+            if($existing){
+                if($score > $existing->score){
+                    $existing->update(['score' => $score]);
+                }
+            } else {
+                History::create([
+                    'score'   => $score,
+                    'quiz_id' => session('quiz_id'),
+                    'user_id' => Auth::id(),
+                ]);
+            }
             return redirect('/results');
         }
 
