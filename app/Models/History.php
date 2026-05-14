@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class History extends Model
 {
-    protected $fillable = ['score', 'user_id', 'quiz_id'];
+    protected $fillable = ['score', 'max_score', 'user_id', 'quiz_id'];
 
     public function user (): BelongsTo{
         return $this->belongsTo(User::class);

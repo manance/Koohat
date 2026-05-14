@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('score');
+            $table->integer('score');
+            $table->integer('max_score');
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

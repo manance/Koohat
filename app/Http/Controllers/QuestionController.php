@@ -64,6 +64,7 @@ class QuestionController extends Controller
             } else {
                 History::create([
                     'score'   => $score,
+                    'max_score' => count($questionIds),
                     'quiz_id' => session('quiz_id'),
                     'user_id' => Auth::id(),
                 ]);
