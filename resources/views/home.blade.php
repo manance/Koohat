@@ -1,19 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <h2 class="font-semibold text-9xl text-gray-800 leading-tight text-center">
+        {{ __('Koohat') }}
+    </h2>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+    
     @foreach($quizzes as $quiz)
         <a href="/quizzes/{{$quiz->id}}">{{ $quiz->name }}</a><br/>
     @endforeach

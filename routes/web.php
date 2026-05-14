@@ -22,6 +22,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
     Route::get('/results', [QuizController::class, 'results'])->name('results');
     Route::get('/history', [HistoryController::class, 'index'])->name('history');
+    Route::get('about', function () {
+        return view('about');
+    })->name('about');
+
+    Route::get('resources', function () {
+        return view('resources');
+    })->name('resources');
 });
 
 Route::middleware('auth')->group(function () {
