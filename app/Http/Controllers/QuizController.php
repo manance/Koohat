@@ -16,6 +16,7 @@ class QuizController extends Controller
         
         $questionIds = $quiz->questions->shuffle()->pluck('id')->toArray();
         $questionIds = array_slice($questionIds, 0, 15);
+        $count = count($questionIds);
 
         session([
             'quiz_id'      => $quiz->id,
@@ -26,7 +27,7 @@ class QuizController extends Controller
         ]);
 
         $firstQuestionId = $questionIds[0];
-        return view('quiz', compact('quiz', 'firstQuestionId'));
+        return view('quiz', compact('quiz', 'firstQuestionId', 'count'));
 
     }
 
