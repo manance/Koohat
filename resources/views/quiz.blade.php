@@ -1,23 +1,38 @@
 <x-app-layout>
     <x-slot:title>{{ $quiz->name }}</x-slot:title>
-    <div class="size-auto h-dvh flex flex-col justify-center items-center bg-gray-300">
-        <div class="mt-20 w-1/10 border-b-8 border-red-800">
-            <h2 class="font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-800 leading-tight text-center">
-                {{$quiz->name}}
-            </h2>  
+
+    <div class="flex-1 flex flex-col justify-center items-center bg-gray-300 px-4 py-10">
+
+        <div class="mt-8 w-full max-w-3xl border-b-8 border-red-800 pb-4">
+            <h2 class="font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-800 text-center break-words">
+                {{ $quiz->name }}
+            </h2>
         </div>
-        <div class="pb-8 mt-8 flex flex-col w-1/5 h-1/3 bg-gray-200 rounded-lg justify-around items-center">
-            <div class="flex flex-col w-4/5 h-4/5 items-center justify-center">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{{ $count }}</h2>
-                <h4 class="text-red-800 text-sm sm:text-md md:text-xl lg:text-2xl">JAUTĀJUMI</h4>
+        <div class="mt-8 w-full max-w-md bg-gray-200 rounded-2xl p-6 sm:p-8 flex flex-col items-center">
+
+            <div class="flex flex-col items-center justify-center mb-8">
+                <h2 class="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800">
+                    {{ $count }}
+                </h2>
+
+                <h4 class="text-red-800 text-lg sm:text-xl md:text-2xl tracking-wide">
+                    JAUTĀJUMI
+                </h4>
             </div>
-            <div class="w-full h-1/5 flex justify-around">
-                <div class="rounded-xl bg-gray-50 w-2/5 h-full hover:bg-gray-100 hover:border-b-4 border-red-800">
-                    <a class="w-full h-full inline-block text-center content-center" href="/quizzes">Atpakaļ</a>
-                </div>
-                <div class="rounded-xl bg-gray-50 w-2/5 h-full hover:bg-gray-100 hover:border-b-4 border-red-800">
-                    <a class="w-full h-full inline-block text-center content-center" href="/questions/{{ $firstQuestionId }}">Sākt</a>
-                </div>
+
+            <div class="w-full flex flex-col sm:flex-row gap-4">
+                <a
+                    class="flex-1 text-center bg-gray-50 hover:bg-gray-100 hover:border-b-4 border-red-800 rounded-xl py-3 transition-all"
+                    href="/quizzes"
+                >
+                    Atpakaļ
+                </a>
+                <a
+                    class="flex-1 text-center bg-gray-50 hover:bg-gray-100 hover:border-b-4 border-red-800 rounded-xl py-3 transition-all"
+                    href="/questions/{{ $firstQuestionId }}"
+                >
+                    Sākt
+                </a>
             </div>
         </div>
     </div>
