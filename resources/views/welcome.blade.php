@@ -1,31 +1,36 @@
 <x-guest-layout>
-    <h1>Hello</h1>
+    <div class="flex justify-center flex-col items-center w-100 h-[90vh]">
+    <h2 class="text-sm">Welcome to</h2>
+    <h1 class="text-7xl font-black font-mono pb-4 border-b-[5px] border-red-800">Koohat</h1>
     @if (Route::has('login'))
-        <nav class="flex items-center justify-end gap-4">
+        <nav class="flex items-center justify-end gap-4 ">
             @auth
                 <a
                     href="{{ url('/quizzes') }}"
-                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                    class="mt-5 bg-[#CC2626] px-5 py-1.5 rounded-md hover:bg-[#A31F1F] transition-colors duration-250 border-[1px] border-black text-white font-bold"
                 >
-                    Dashboard
+                    Viktorīnas
                 </a>
             @else
+            <div class="flex gap-4 mt-5">
                 <a
                     href="{{ route('login') }}"
-                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                    class="bg-[#CC2626] px-5 py-1.5 rounded-md hover:bg-[#A31F1F] transition-colors duration-250 border-[1px] border-black text-white font-bold"
                 >
-                    Log in
+                    Pieslēgties
                 </a>
 
                 @if (Route::has('register'))
                 <br>
                     <a
                         href="{{ route('register') }}"
-                        class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                        Register
+                        class="bg-[#353535] px-5 py-1.5 rounded-md hover:bg-black transition-colors duration-250 border-[1px] border-black text-white font-bold">
+                        Reģistrēties
                     </a>
                 @endif
+                </div>
             @endauth
         </nav>
     @endif
+    </div>
 </x-guest-layout>

@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Atjauno sava profila informāciju un ēpastu") }}
+            {{ __("Atjauno sava profila informāciju un e-pastu") }}
         </p>
     </header>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Saglabāt') }}</x-primary-button>
+            <x-primary-button class="bg-red-900 text-white">{{ __('Saglabāt') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
