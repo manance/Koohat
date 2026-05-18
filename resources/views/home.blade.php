@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot:title>Koohat</x-slot:title>
     <div class="flex-1 flex flex-col justify-around items-center bg-gray-300 px-4 py-8">
-        <div class="w-full max-w-4xl border-b-8 border-red-800">
-            <h2 class="font-semibold text-4xl sm:text-5xl md:text-7xl lg:text-9xl text-gray-800 leading-tight text-center break-words">
+        <div class="w-full max-w-4xl border-b-[6px] border-red-700">
+            <h2 class="font-semibold text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-gray-800 leading-tight text-center break-words">
                 {{ __('Koohat') }}
             </h2>
         </div>
