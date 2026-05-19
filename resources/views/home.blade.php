@@ -2,7 +2,7 @@
     <x-slot:title>Koohat</x-slot:title>
     <div class="flex-1 flex flex-col justify-around items-center bg-gray-300 px-4 py-8">
         <div class="w-full max-w-md border-b-8 border-red-800">
-            <h2 class="font-semibold text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-gray-800 leading-tight text-center break-words">
+            <h2 class="font-semibold font-mono text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-gray-800 leading-tight text-center break-words">
                 {{ __('Koohat') }}
             </h2>
         </div>
